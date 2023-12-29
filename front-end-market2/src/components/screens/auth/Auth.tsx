@@ -18,7 +18,7 @@ const Auth: FC = () => {
 
 	const { login, register } = useActions()
 
-	const [type, setType] = useState<'login' | 'register'>('login')
+	const [type, setType] = useState<'sign in' | 'sign up'>('sign in')
 
 	const {
 		register: formRegister,
@@ -30,7 +30,7 @@ const Auth: FC = () => {
 	})
 
 	const onSubmit: SubmitHandler<IEmailPassword> = data => {
-		if (type == 'login') login(data)
+		if (type == 'sign in') login(data)
 		else register(data)
 
 		reset()
@@ -80,12 +80,12 @@ const Auth: FC = () => {
 							<div>
 								<button
 									type='button'
-									className='flex opacity-20 m-auto mt-3 text-sm'
+									className='flex opacity-40 m-auto mt-3 text-sm text-secondary'
 									onClick={() =>
-										setType(type == 'login' ? 'register' : 'login')
+										setType(type == 'sign in' ? 'sign up' : 'sign in')
 									}
 								>
-									{type == 'login' ? 'register' : 'login'}
+									{type == 'sign in' ? 'sign up' : 'sign in'}
 								</button>
 							</div>
 						</>

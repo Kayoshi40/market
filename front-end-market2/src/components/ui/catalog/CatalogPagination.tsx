@@ -7,7 +7,7 @@ import Heading from '../Heading'
 import Loader from '../Loader'
 import Button from '../button/Button'
 import SortDropdown from './SortDropdown'
-import ProductItem from './product-item/Productitem'
+import ProductItem from './product-item/ProductItem'
 
 interface ICatalogPagination {
 	data: TypePaginationProducts
@@ -21,13 +21,26 @@ const CatalogPagination: FC<ICatalogPagination> = ({ data, title }) => {
 		EnumProductSort.NEWEST
 	)
 
-	const { data: response, isLoading } = useQuery({
-		queryKey: ['products', sortType],
-		queryFn: () => {
-			ProductService.getAll({ page, perPage: 4, sort: sortType })
-		},
-		initialData: data
-	})
+	const extraPage = (length: number) => {
+		let page
+		if (length % 4 > 0) {
+			page = 1
+		} else {
+			page = 0
+		}
+		return page
+	}
+
+	const perPage = 8
+
+	const { data: response, isLoading } = useQuery(
+		['products', sortType, page],
+		() => ProductService.getAll({ page, perPage: perPage, sort: sortType }),
+		{
+			initialData: data,
+			keepPreviousData: true
+		}
+	)
 
 	if (isLoading) return <Loader />
 
@@ -42,10 +55,23 @@ const CatalogPagination: FC<ICatalogPagination> = ({ data, title }) => {
 							<ProductItem key={product.id} product={product} />
 						))}
 					</div>
-					<div className='text-center'></div>
-					<Button size='sm' variant='dark' onClick={() => setPage(page + 1)}>
-						Load more
-					</Button>
+					<div className='text-center mt-16'>
+						{Array.from({
+							length: response.length / perPage + extraPage(response.length)
+						}).map((_, index) => {
+							const pageNumber = index + 1
+							return (
+								<Button
+									size='sm'
+									variant={page == pageNumber ? 'dark' : 'light'}
+									onClick={() => setPage(pageNumber)}
+									className='mx-3'
+								>
+									{pageNumber}
+								</Button>
+							)
+						})}
+					</div>
 				</>
 			) : (
 				<div>There are no products</div>

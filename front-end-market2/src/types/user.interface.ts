@@ -11,6 +11,6 @@ export interface IUser {
 }
 
 export interface IFullUser extends IUser {
-	favorites: IProduct[]
-	orders: IOrder[]
+	favorites?: IProduct[]
+	orders?: IOrder[]
 }

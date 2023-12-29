@@ -26,7 +26,7 @@ const AddToCartButton: FC<{ product: IProduct }> = ({ product }) => {
 							})
 				}
 			>
-				{currentElement ? <RiShoppingCartFill /> : <RiShoppingCartLine />}
+				{currentElement ? <RiShoppingCartFill className='fill-primary' size={30}/> : <RiShoppingCartLine className='fill-primary' size={30}/>}
 			</button>
 		</div>
 	)

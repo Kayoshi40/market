@@ -32,7 +32,7 @@ const FavoriteButton: FC<{ productId: number }> = ({ productId }) => {
 					mutate()
 				}}
 			>
-				{isExists() ? <MdFavorite /> : <MdFavoriteBorder />}
+				{isExists() ? <MdFavorite  size={30}/> : <MdFavoriteBorder size={30}/>}
 			</button>
 		</div>
 	)

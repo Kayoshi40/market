@@ -5,7 +5,14 @@ const nextConfig = {
 		SERVER_URL: process.env.SERVER_URL,
 		APP_URL: process.env.APP_URL
 	},
-	images: { domains: ['loremflickr.com', 'www.aptronixindia.com'] }
+	images: {
+		domains: [
+			'loremflickr.com',
+			'www.aptronixindia.com',
+			'cloudflare-ipfs.com',
+			'avatars.githubusercontent.com'
+		]
+	}
 }
 
 module.exports = nextConfig

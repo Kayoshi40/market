@@ -1,13 +1,13 @@
-import { returnUserObject } from './return-user.object';
 import {
-  NotFoundException,
   BadRequestException,
   Injectable,
+  NotFoundException,
 } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { PrismaService } from 'src/prisma.service';
-import { UserDto } from './user.dto';
 import { hash } from 'argon2';
+import { PrismaService } from 'src/prisma.service';
+import { returnUserObject } from './return-user.object';
+import { UserDto } from './user.dto';
 
 @Injectable()
 export class UserService {
@@ -27,6 +27,12 @@ export class UserService {
             price: true,
             images: true,
             slug: true,
+            category: {
+              select: {
+                slug: true,
+              },
+            },
+            reviews: true,
           },
         },
         ...selectObject,

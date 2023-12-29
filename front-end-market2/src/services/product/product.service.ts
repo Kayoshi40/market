@@ -30,7 +30,7 @@ export const ProductService = {
 		})
 	},
 
-	async getByCategory(categorySlug: string | number, data: TypeProductData) {
+	async getByCategory(categorySlug: string | number) {
 		return axiosClassic<IProduct[]>({
 			url: `${PRODUCTS}/by-category/${categorySlug}`,
 			method: 'GET'

@@ -1,7 +1,6 @@
 import { IProduct } from '@/types/product.interface'
 import { convertPrice } from '@/utils/convertPrice'
 import dynamic from 'next/dynamic'
-import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
 import AddToCartButton from './AddToCartButton'
@@ -23,16 +22,17 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 					style={{ display: 'inline-block' }}
 					href={`/product/${product.slug}`}
 				>
-					<Image
-						width={250}
-						height={250}
+					<img
+						className=' rounded-xl'
+						width='100%'
+						height='100%'
 						src={product.images[0]}
 						alt={product.name}
 					/>
 				</Link>
 			</div>
 			<Link href={`/product/${product.slug}`}>
-				<h3 className='mb- font-semibold mt-2'>{product.name}</h3>
+				<h3 className=' font-semibold mt-2'>{product.name}</h3>
 			</Link>
 			<Link
 				href={`/category/${product.category.slug}`}

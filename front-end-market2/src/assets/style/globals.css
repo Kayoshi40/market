@@ -4,6 +4,7 @@
 
 body {
   @apply text-base text-black;
+  background-color: 'bg-color';
 }
 
 .disabled {
