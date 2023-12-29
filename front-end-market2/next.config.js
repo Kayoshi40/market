@@ -12,7 +12,13 @@ const nextConfig = {
 			'cloudflare-ipfs.com',
 			'avatars.githubusercontent.com'
 		]
-	}
+	},
+	remotePatterns: [
+		{
+			protocol: 'https',
+			hostname: '**'
+		}
+	]
 }
 
 module.exports = nextConfig
