@@ -18,7 +18,7 @@ const Auth: FC = () => {
 
 	const { login, register } = useActions()
 
-	const [type, setType] = useState<'sign in' | 'sign up'>('sign in')
+	const [type, setType] = useState<'sign in' | 'registration'>('sign in')
 
 	const {
 		register: formRegister,
@@ -62,7 +62,7 @@ const Auth: FC = () => {
 							></Field>
 							<Field
 								{...formRegister('password', {
-									required: 'Email is required',
+									required: 'Password is required',
 									minLength: {
 										value: 6,
 										message: 'Min lenght should more 6 symbols'
@@ -82,10 +82,10 @@ const Auth: FC = () => {
 									type='button'
 									className='flex opacity-40 m-auto mt-3 text-sm text-secondary'
 									onClick={() =>
-										setType(type == 'sign in' ? 'sign up' : 'sign in')
+										setType(type == 'sign in' ? 'registration' : 'sign in')
 									}
 								>
-									{type == 'sign in' ? 'sign up' : 'sign in'}
+									{type == 'sign in' ? 'register' : 'sign in'}
 								</button>
 							</div>
 						</>

@@ -1,6 +1,6 @@
-import { faker } from '@faker-js/faker';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
+import { slugify as slugify } from 'transliteration';
 import { CategoryDto } from './category.dto';
 import { returnCategoryObject } from './return-category';
 
@@ -53,7 +53,7 @@ export class CategoryService {
       },
       data: {
         name: dto.name,
-        slug: faker.helpers.slugify(dto.name).toLowerCase(),
+        slug: slugify(dto.name, { replace: [[' ', '-']] }),
       },
     });
   }

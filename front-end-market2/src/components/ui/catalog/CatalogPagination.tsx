@@ -23,7 +23,7 @@ const CatalogPagination: FC<ICatalogPagination> = ({ data, title }) => {
 
 	const extraPage = (length: number) => {
 		let page
-		if (length % 4 > 0) {
+		if (length % 8 > 0) {
 			page = 1
 		} else {
 			page = 0

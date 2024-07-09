@@ -6,18 +6,20 @@ export type  TypeProductData = {
   description?: string
   images: string[]
   categoryId: number
+  createdAt: Date
+  updatedAt: Date
 }
 
 export type TypeProductDataFilters = {
   sort?: EnumProductSort
-  searchTerm?: string
+  searchTerm?: string | number
   page?: string | number
   perPage?: string | number
 }
 
 export enum EnumProductSort {
-  HUGH_PRICT ='high-price',
-  LOW_PRICT = 'low-price',
+  HUGH_PRICE ='high-price',
+  LOW_PRICE = 'low-price',
   NEWEST = 'newest',
   OLDEST = 'oldest'
 }

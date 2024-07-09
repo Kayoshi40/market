@@ -26,7 +26,8 @@
     "react-simple-star-rating": "^5.1.7",
     "redux": "^5.0.0",
     "redux-persist": "^6.0.0",
-    "sass": "^1.69.5"
+    "sass": "^1.69.5",
+    "transliteration": "^2.3.5"
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^5.12.1",

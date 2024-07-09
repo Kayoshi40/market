@@ -7,7 +7,7 @@ const initialState: IInitialState = {
 	user: getStoreLocal('user')
 		? JSON.parse(localStorage.getItem('user') as string)
 		: null,
-	IsLoading: false
+	isLoading: false
 }
 
 export const userSlice = createSlice({
@@ -17,29 +17,29 @@ export const userSlice = createSlice({
 	extraReducers: builder => {
 		builder
 			.addCase(register.pending, state => {
-				state.IsLoading = true
+				state.isLoading = true
 			})
 			.addCase(register.fulfilled, (state, { payload }) => {
-				state.IsLoading = false
+				state.isLoading = false
 				state.user = payload.user
 			})
 			.addCase(register.rejected, state => {
-				state.IsLoading = false
+				state.isLoading = false
 				state.user = null
 			})
 			.addCase(login.pending, state => {
-				state.IsLoading = true
+				state.isLoading = true
 			})
 			.addCase(login.fulfilled, (state, { payload }) => {
-				state.IsLoading = false
+				state.isLoading = false
 				state.user = payload.user
 			})
 			.addCase(login.rejected, state => {
-				state.IsLoading = false
+				state.isLoading = false
 				state.user = null
 			})
 			.addCase(logout.fulfilled, state => {
-				state.IsLoading = false
+				state.isLoading = false
 				state.user = null
 			})
 			.addCase(checkAuth.fulfilled, (state, { payload }) => {

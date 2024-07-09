@@ -1,7 +1,9 @@
 import { FC } from 'react'
 
 const Search: FC = () => {
-	const input = document.getElementById('message') as HTMLInputElement | null
+
+	let input = document.getElementById('message') as HTMLInputElement | null
+
 
 	return (
 		<div className=' ml-5 mt-3 mb-3'>
@@ -22,6 +24,7 @@ const Search: FC = () => {
 					data-te-ripple-init
 					data-te-ripple-color='light'
 					onClick={() => {
+						input = document.getElementById('message') as HTMLInputElement
 						window.location.href = `/q?term=${input?.value}`
 					}}
 				>

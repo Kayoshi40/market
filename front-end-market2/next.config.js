@@ -6,19 +6,13 @@ const nextConfig = {
 		APP_URL: process.env.APP_URL
 	},
 	images: {
-		domains: [
-			'loremflickr.com',
-			'www.aptronixindia.com',
-			'cloudflare-ipfs.com',
-			'avatars.githubusercontent.com'
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: '**'
+			}
 		]
-	},
-	remotePatterns: [
-		{
-			protocol: 'https',
-			hostname: '**'
-		}
-	]
+	}
 }
 
 module.exports = nextConfig

@@ -1,8 +1,8 @@
-import { faker } from '@faker-js/faker';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { PaginationService } from 'src/pagination/pagination.service';
 import { PrismaService } from 'src/prisma.service';
+import { slugify } from 'transliteration';
 import { EnumProductSort, GetAllProductDto } from './dto/get-all.product.dto';
 import { ProductDto } from './dto/product.dto';
 import {
@@ -27,7 +27,7 @@ export class ProductService {
     } else if (sort == EnumProductSort.HIGH_PRICE) {
       prismaSort.push({ price: 'desc' });
     } else if (sort == EnumProductSort.OLDEST) {
-      prismaSort.push({ createdAt: 'desc' });
+      prismaSort.push({ createdAt: 'asc' });
     } else {
       prismaSort.push({ createdAt: 'desc' });
     }
@@ -160,7 +160,7 @@ export class ProductService {
         images,
         price,
         name,
-        slug: faker.helpers.slugify(name),
+        slug: slugify(name),
         category: {
           connect: {
             id: categoryId,

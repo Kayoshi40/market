@@ -32,7 +32,7 @@ const createProducts = async (quantity: number) => {
         reviews: {
           create: [
             {
-              rating: faker.datatype.number({ min: 1, max: 5 }),
+              rating: faker.number.int({ min: 1, max: 5 }),
               text: faker.lorem.paragraph(),
               user: {
                 connect: {

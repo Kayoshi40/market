@@ -40,6 +40,7 @@
     "postgresql": "^0.0.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1",
+    "transliteration": "^2.3.5",
     "uuid": "^9.0.1",
     "webpack": "^5.89.0",
     "yookassa": "^0.1.1"

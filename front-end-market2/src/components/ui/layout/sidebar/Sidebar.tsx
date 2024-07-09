@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 import { FiLogOut } from 'react-icons/fi'
+import { IUserState } from './../../../../store/user/user.interface';
 
 const Sidebar: FC = () => {
 	const { data, isLoading } = useQuery(
@@ -26,7 +27,7 @@ const Sidebar: FC = () => {
 	return (
 		<aside
 			className='bg-secondary flex flex-col justify-between'
-			style={{ minHeight: 'calc(100vh - 60px)', height: '100%' }}
+			style={{ minHeight: 'calc(100vh - 60px)', height: '100%', maxWidth: 300 }}
 		>
 			<div>
 				{isLoading ? (
@@ -58,16 +59,16 @@ const Sidebar: FC = () => {
 					<div>Categories not found!</div>
 				)}
 			</div>
-			{ user? !!user && (
+			{ user? user && (
 				<button
-					className='text-white flex items-center ml-10 mb-10'
-					onClick={() => logout() && window.location.reload()}
-				>
-					<FiLogOut />
-					<span className='ml-2'>Logout</span>
-				</button>
-			) : (<Link className='text-white flex items-center ml-10 mb-10' href='/auth'>Вход/Регистрация</Link>)}
-		</aside>
+				className='text-white flex items-center ml-10 mb-10 mr-10 justify-center sticky bottom-10 left-20'
+				onClick={() => logout() && window.location.reload()}
+			>
+				<FiLogOut />
+				<span className='ml-2'>Logout</span>
+			</button>
+		) : (<Link className='text-white flex items-center ml-10 mb-10 mr-10 justify-center sticky bottom-10 left-20' href='/auth'>Вход/Регистрация</Link>)}
+	</aside>
 	)
 }
 

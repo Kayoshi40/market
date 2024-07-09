@@ -49,7 +49,7 @@ const HeaderCart: FC = () => {
 
 			<div
 				className={cn(
-					'absolute top-[4.2rem] w-80 -left-[12.5rem] bg-secondary rounded-xl ps-5 py-3 text-sm menu z-20 text-white',
+					'absolute top-[4.2rem] w-80 -left-[15rem] bg-secondary rounded-xl ps-5 py-3 text-sm menu z-20 text-white',
 					isShow ? 'open-menu' : 'close-menu'
 				)}
 			>
